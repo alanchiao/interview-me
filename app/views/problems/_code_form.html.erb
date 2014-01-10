@@ -1,0 +1,139 @@
+<%# Form for creating and editing coding problems %>
+
+<%# The coding box and Python interpreter load a lot of CSS and JS %>
+<%# Include them here so that they are not loaded with every page of the application %>
+<%= stylesheet_link_tag "interpreter" %>
+<%= javascript_include_tag "interpreter", "data-turbolinks-track" => true %>
+
+<div class="alert alert-danger hidden">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <span id="form-error-content"></span>
+</div>
+<br />
+<%# Problem Creation Part One: Basic details %>
+<div id="form-content" class="col-sm-6 col-sm-offset-3">
+<%= form_for @code_problem, as: :problem, url: problems_path(@code_problem, format: :js), html:{ class: "form-horizontal problem-type-form", id: "coding-form"}, remote: true do |f| %>
+
+    <% if @code_problem.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@code_problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
+            <ul>
+                <% @code_problem.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+
+                <% @code_problem.tests.each do |test| %>
+                    <% test.mistakes.each do |mistake| %>
+                        <% mistake.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <%= f.hidden_field :type, value: CodeProblem.name %>
+
+	<div id="code-form">
+		<div class="form-group field">
+		    <% if @code_problem.errors[:title].any? %>
+	          <%= f.text_field :title, :class => "col-sm-12 input-rounded taller error", :placeholder => "Title" %>
+	          <% @code_problem.errors.full_messages_for(:title).each do |msg| %>
+	            <p class="error-msg"><%= msg %></p>
+	          <% end %>
+	        <% else %>
+	          <%= f.text_field :title, :class => "col-sm-12 input-rounded taller", :placeholder => "Title" %>
+	        <% end %>
+		</div>
+
+		<div class="form-group field">
+	        <% if @code_problem.errors[:question].any? %>
+	          <%= f.text_field :question, :class => "col-sm-12 input-rounded taller form-textarea error", :placeholder => "Enter design problem" %>
+	          <% @code_problem.errors.full_messages_for(:question).each do |msg| %>
+	            <p class="error-msg"><%= msg %></p>
+	          <% end %>
+	        <% else %>
+	          <%= f.text_area :question, :class => "col-sm-12 input-rounded form-textarea taller", :placeholder => "Enter code problem" %>
+	        <% end %>
+		</div>
+
+		<div class="form-group field">
+	        <%= f.label :category_id %>
+	        <% if @code_problem.errors[:category_id].any? %>
+	          <%= f.select :category_id, options_for_select(Category.get_all_mappings), { :include_blank=>false }, {:class => 'form-control error'}  %>
+	          <% @code_problem.errors.full_messages_for(:category_id).each do |msg| %>
+	            <p class="error-msg"><%= msg %></p>
+	          <% end %>
+	        <% else %>
+	          <%= f.select :category_id, options_for_select(Category.get_all_mappings), { :include_blank=>false }, {:class => 'form-control'}  %>
+	        <% end %>
+		</div>
+
+		<div class="form-group field">
+	        <%= f.label :difficulty %>
+	        <% if @code_problem.errors[:difficulty].any? %>
+	          <%= f.number_field :difficulty, min: 1, max: 3, step: 1, value: 1, class: 'form-control error'  %>
+	          <% @code_problem.errors.full_messages_for(:difficulty).each do |msg| %>
+	            <p class="error-msg"><%= msg %></p>
+	          <% end %>
+	        <% else %>
+	          <%= f.number_field :difficulty, min: 1, max: 3, step: 1, value: 1, class: 'form-control'  %>
+	        <% end %>
+		</div>
+
+        <div class="form-group field">
+            <%= f.label :skeleton %>
+            <%= f.text_area :skeleton, value: "# Enter function definition skeleton code for users", id: "code-skeleton" %>
+        </div>
+
+        <div class="form-group field">
+            <%= f.label :solution %>
+            <%= f.text_area :solution, value: "# Enter sample solution", id: "sample-solution" %>
+        </div>
+
+		<div class="form-group field">
+			<%= f.submit "Next", :class => "btn btn-primary col-sm-12 taller", :id => "submit-code-problem"  %>
+		</div>
+	</div>
+<% end %>
+</div>
+
+<%# Problem Creation Part Two: Adding hints %>
+<div id="code-form-hints" class="hidden">
+    <div class="row">
+
+    	<div class="col-sm-6 col-sm-offset-3">
+	    	<p>A hint is a common reason for arriving at a wrong answer. At the next screen, you will get the opportunity to associate wrong outputs with hints, thereby helping your users realize what they did incorrectly.</p>
+	        <p>For example, a hint for a median finding algorithm might be "Did you make sure to take the average if the length is even?"</p>
+	    </div>
+
+        <div class="col-sm-6 col-sm-offset-3">
+			<ul id="code-hints" class="col-sm-12">
+			 </ul>
+	        <button id="add-hint" class="btn btn-primary col-sm-4 col-sm-offset-1" style="display:block;">Add Hint</button>
+	        <button id="add-hints" class="btn btn-primary col-sm-4 col-sm-offset-2" style="display:block;"> Next </button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+<div id="code-form-tests" class="hidden">
+	<div class="col-sm-6 col-sm-offset-3">
+    	<p>Testcases are crucial to coding questions. By comparing the user's output with your expected output, you can determine whether their code is correct or not.</p>
+        <p>When writing the test input, make sure to write the entire function call. For example, if your function skeletion was "def f(x):", make sure your input is "f(3)" and not just "3"</p>
+        <p>For each testcase, you can also add mistakes. For each mistake, you specify the expected incorrect result, and associate it with a hint. If the user gets the same result, the hint will be shown.</p>
+        <p>Make sure that all of your expression are valid Python expressions</p>
+    </div>
+    <ul id="code-tests" class="col-sm-6 col-sm-offset-3">
+    </ul>
+      <div class="col-sm-2 col-sm-offset-7 margin-bottom-10">
+        <a id="add-test" class="btn-custom-mistakes">Add Tests</a>
+      </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+        <button id="add-tests" class="btn btn-primary col-sm-12"> Submit </button>
+        </div>
+    </div>
+</div>
+</div>

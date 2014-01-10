@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  test_id: 1
+  wrong_output: MyString
+  hint_id: 1
+
+two:
+  test_id: 1
+  wrong_output: MyString
+  hint_id: 1

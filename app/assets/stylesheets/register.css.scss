@@ -1,0 +1,27 @@
+#registration-form{
+  padding-top: 30px;
+
+  h3{
+    margin-left: -15px;
+  }
+
+  .register-submit {
+    background-color: rgb(0, 136, 204);
+    color: white;
+    font-size: 14px;
+    height: 40px;
+    padding: 9px 12px;
+	margin: 0 10px 0 5px;
+    text-shadow: 0px -1px 0px #374683;
+    width: 100%;
+    -moz-border-radius: 5px;
+	border-radius: 5px;
+  }
+
+}
+
+.error-msg {
+  color: red;
+  font-size: 11px;
+  margin-bottom: 0;
+}

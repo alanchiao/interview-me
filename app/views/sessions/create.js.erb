@@ -1,0 +1,26 @@
+/**
+* Js response for sign in ajaxing
+* Modify the navbar when a user signs in
+* Flash danger when signin fails
+*/
+$(function(){
+    <% if flash[:danger] %>
+        $("#flashes").html("<div class='alert alert-danger alert-dismissable col-sm-8 col-sm-offset-2' style='z-index:6;'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><%= flash[:danger] %></div>");
+    <% else %>
+        $("#right-nav").html("");
+        var li = '<li><%= link_to current_user.first_name + "\'s profile", current_user, method: "get" %></li>';
+        var li2 = '<li><%= link_to "Sign out", signout_path, method: "delete" %></li>';
+        $("#right-nav").append(li);
+        $("#right-nav").append(li2);
+        if('<%= current_user.is_admin? %>' === 'true'){
+            $('#left-nav').append('<li><%= link_to "User Permissions", permissions_path %></li>');
+        }
+        if('<%= current_user.is_admin? %>' === 'true' || '<%= current_user.is_content_creator? %>' === 'true'){
+            $('#left-nav').append('<li><%= link_to "Add New Problem", new_problem_path %></li>');
+        }
+
+        if ($('#design-problem-container').length) {
+            window.location.reload();
+        }
+    <% end %>
+});

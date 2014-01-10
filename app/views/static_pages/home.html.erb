@@ -1,0 +1,34 @@
+<%# interview.me home page - where people get an initial impression of the product and eventually a
+working demo %>
+
+<%# Homepage 'stock' images %>
+<div id="landing">
+    <img id="landing-img" src="/assets/google.png">
+</div>
+
+<%# Blurb overlaying stock image %>
+<div id="homepage-blurb">
+    <h1>This is where you want to be.</h1>
+    <p>We can help you get there. Sharpen your interviewing skills on <span>interview.me</span> and take down challenges set forth by any job.</p>
+    <%= link_to "Get Started", problems_path, id: "btn-home-problems", :class => "right" %>
+</div>
+
+<%# Actual content below image %>
+<div id="homepage-content" class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3 class="mini-headers"><img class="header-image" src="/assets/keyboard-lg.png"/> <span>Hack The Code</span></h3>
+            <p>Just finish your first programming course and looking to land that first internship? Or are you a ninja hacker that wants to be prepared for any challenge? Test your programming ability against coding problems created by software engineers.</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h3 class="mini-headers"><img class="header-image" src="/assets/lightbulb2.png"/> <span>Design The System</span></h3>
+            <p>The bread and butter of many computer science interviews. Design questions challenge you to think critically, create elegant solutions, and effectively communicate your ideas.</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h3 class="mini-headers"><img class="header-image" src="/assets/company-globe.png"/> <span>Rock The Interview</span></h3>
+            <p>Boost your confidence completing problems on interview.me. Learn from the approaches of your peers and solutions given by experienced engineers. Beast your interviews to land that dream job. </p>
+        </div>
+    </div>
+</div>

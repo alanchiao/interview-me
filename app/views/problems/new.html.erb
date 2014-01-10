@@ -1,0 +1,20 @@
+<%# HTML page for problem creation by content_creators and admins %>
+
+<h2 class="center">New Problem</h2>
+
+<div id="new-problem-container">
+
+    <div class="form-group field">
+        <%=label_tag 'Problem Type', 'Problem Type', id: 'new-problem-label', class: "col-sm-4 col-sm-offset-2 control-label" %>
+        <select id="problem_type">
+        	<option value="coding-form"> Coding </option>
+        	<option value="design-form"> Design </option>
+        </select>
+    </div>
+
+    <div class="row">
+    <%= render 'code_form.html.erb' %>
+    <%= render 'design_form.html.erb' %>
+    </div>
+
+</div>

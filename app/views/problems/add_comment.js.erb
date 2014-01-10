@@ -1,0 +1,5 @@
+commentResp = <%= raw @resp %>;
+$('#comments-new textarea').text('').val('');
+$('#comments-list').empty();
+appendTopComment(commentResp.top_comment);
+appendComments(0, step, true);

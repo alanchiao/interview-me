@@ -1,0 +1,12 @@
+<%# Render add new comment field for discussions on design questions pages %>
+<%= form_for(Comment.new, :url => { :controller => :problems, :action => :add_comment, :format => :js }, :remote => true) do |f| %>
+    <%= f.hidden_field :design_problem_id, value: @problem.id %>
+    <div class="form-group field">
+        <%= f.text_area :content, placeholder: "Add to the discussion", id: 'add-comment', class: 'form-field form-textarea'  %>
+    </div>
+
+    <div class="form-group field">
+       <%= f.submit "Add comment", class: "btn btn-primary col-sm-offset-9 col-sm-3", id: "add-comment-button" %>
+    </div>
+
+<% end %>

@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+comment1:
+  id: 1
+  content: "This is my comment"
+  author_id: 1
+  design_problem_id: 1
+  points: 0
+
+comment2:
+  id: 2
+  content: "comment"
+  author_id: 1
+  design_problem_id: 1
+  points: 3
+
+comment3:
+  id: 3
+  content: "comment"
+  author_id: 2
+  design_problem_id: 1
+  points: 0

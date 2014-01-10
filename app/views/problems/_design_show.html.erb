@@ -1,0 +1,35 @@
+<%# HTML partial for display of design problems %>
+
+<div class="row">
+    <div id="design-problem-container" class="col-sm-7">
+        <div id="design-problem-question">
+           <p><%= simple_format(@problem.question) %></p>
+        </div>
+        <div id="design-solution-title">
+            <a href="#">View Solution</a>
+            <div id="design-solution" data-shown="false" hidden><%= simple_format(@problem.solution) %></div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div id="design-problem-container" class="col-sm-7">
+        <h4 class="inline">Your Solution</h4><% if signed_in? %><span id="save-status" class="right">Not saved</span><% end %>
+        <textarea id="design-input" placeholder="My design" autofocus><% if @attempt %><%= @attempt.solution %><% end %></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div id="comments" class="col-sm-7">
+    <h4>Comments</h4>
+    <div id="comments-new">
+        <% if signed_in? %>
+        <%= render 'comments/new.html.erb' %>
+        <% else %>
+        <strong>Login or register to join the discussion!</strong>
+        <% end %>
+    </div>
+    <div id="comments-list" data-comments-url="<%= comments_problem_url(@problem) %>"></div>
+    <div id="comments-paginator"></div>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<%# HTML page for displaying the problems %>
+<h2><%= @problem.title %></h2>
+<h4><%= @problem.category.name %> : Level <%= @problem.difficulty %></h4>
+
+<div id="problem-id" data-problem-id="<%= @problem.id %>" hidden></div>
+
+<div class="row">
+	<div class="col-sm-12">
+		<% if @problem.is_code_problem? %>
+			<%= render :partial => 'code_show.html.erb' %>
+		<% else %>
+			<%= render :partial => 'design_show.html.erb' %>
+		<% end %>
+	</div>
+</div>

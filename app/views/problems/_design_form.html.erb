@@ -1,0 +1,72 @@
+<%# Form for creating and editing design problems %>
+
+<%# @problem.becomes temporarily converts design_problem into problem for record keeping purposes %>
+<div id="form-content" class="col-sm-4 col-sm-offset-4">
+<%= form_for @design_problem, as: :problem, url: problems_path, html:{ class: "form-horizontal problem-type-form", id: "design-form" } do |f| %>
+
+    <%= f.hidden_field :type, value: DesignProblem.name %>
+
+    <div class="form-group field">
+        <% if @design_problem.errors[:title].any? %>
+          <%= f.text_field :title, :class => "col-sm-12 input-rounded taller error", :placeholder => "Title" %>
+          <% @design_problem.errors.full_messages_for(:title).each do |msg| %>
+            <p class="error-msg"><%= msg %></p>
+          <% end %>
+        <% else %>
+          <%= f.text_field :title, :class => "col-sm-12 input-rounded taller", :placeholder => "Title" %>
+        <% end %>
+    </div>
+
+    <div class="form-group field">
+        <% if @design_problem.errors[:question].any? %>
+          <%= f.text_field :question, :class => "col-sm-12 input-rounded taller form-textarea error", :placeholder => "Enter design problem" %>
+          <% @design_problem.errors.full_messages_for(:question).each do |msg| %>
+            <p class="error-msg"><%= msg %></p>
+          <% end %>
+        <% else %>
+          <%= f.text_area :question, :class => "col-sm-12 input-rounded form-textarea taller", :placeholder => "Enter design problem" %>
+        <% end %>
+    </div>
+
+    <div class="form-group field">
+        <%= f.label :category_id %>
+        <% if @design_problem.errors[:category_id].any? %>
+          <%= f.select :category_id, options_for_select(Category.get_all_mappings), { :include_blank=>false }, {:class => 'form-control error'}  %>
+          <% @design_problem.errors.full_messages_for(:category_id).each do |msg| %>
+            <p class="error-msg"><%= msg %></p>
+          <% end %>
+        <% else %>
+          <%= f.select :category_id, options_for_select(Category.get_all_mappings), { :include_blank=>false }, {:class => 'form-control'}  %>
+        <% end %>
+    </div>
+
+    <div class="form-group field">
+        <%= f.label :difficulty %>
+        <% if @design_problem.errors[:difficulty].any? %>
+          <%= f.number_field :difficulty, min: 1, max: 3, step: 1, value: 1, class: 'form-control error'  %>
+          <% @design_problem.errors.full_messages_for(:difficulty).each do |msg| %>
+            <p class="error-msg"><%= msg %></p>
+          <% end %>
+        <% else %>
+          <%= f.number_field :difficulty, min: 1, max: 3, step: 1, value: 1, class: 'form-control'  %>
+        <% end %>
+    </div>
+
+    <div class="form-group field">
+        <%= f.label :solution %>
+        <% if @design_problem.errors[:solution].any? %>
+          <%= f.text_area :solution, :class => "col-sm-12 input-rounded form-textarea taller error", :placeholder => "Enter sample solution" %>
+          <% @design_problem.errors.full_messages_for(:solution).each do |msg| %>
+            <p class="error-msg"><%= msg %></p>
+          <% end %>
+        <% else %>
+          <%= f.text_area :solution, :class => "col-sm-12 input-rounded form-textarea taller", :placeholder => "Enter sample solution" %>
+        <% end %>
+    </div>
+
+  <div class="form-group field">
+    <%= f.submit "Create Problem", :class => "btn btn-primary col-sm-12 taller" %>
+  </div>
+
+<% end %>
+</div>

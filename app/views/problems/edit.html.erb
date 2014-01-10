@@ -1,0 +1,9 @@
+<%# HTML page for editing a problem %>
+
+<h2> <%= @problem.title %></h2>
+
+<% if @problem.is_code_problem? %>
+	<%= render 'code_form.html.erb' %>
+<% else %>
+	<%= render 'design_form.html.erb' %>
+<% end %>

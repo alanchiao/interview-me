@@ -1,0 +1,41 @@
+<%# HTML page for changing user permissions %>
+<h2>Change User Permissions</h2>
+
+<div class="row">
+
+<div class="col-sm-6">
+    <h3>Add Admin</h3>
+    <p>Give user the ability to create content and modify user permissions.</p>
+    <%= form_tag("/manage_admins", method: "post", remote: true) do %>
+      <%= label_tag("new-admin", "Username: ") %>
+      <%= text_field_tag "new-admin", nil, class: "input-rounded" %>
+      <%= submit_tag("Make admin", :class => "btn btn-sm btn-primary") %>
+    <% end %>
+
+    <h3>Current Admins</h3>
+    <ul id="current-admins">
+      <% User.get_admins.each do |u| %>
+        <li> <%= u.username %> </li>
+      <% end %>
+    </ul>
+</div>
+
+<div id="content-creator-container" class="col-sm-5 col-sm-offset">
+    <h3>Add Content Creator</h3>
+    <p>Grant user the ability to create new problems.</p>
+    <%= form_tag("/manage_content_creators", method: "post", remote: true) do %>
+        <%= label_tag("new-cc", "Username: ") %>
+        <%= text_field_tag "new-cc", nil, class: "input-rounded" %>
+        <%= submit_tag("Make creator", :class => "btn btn-sm btn-primary")  %>
+    <% end %>
+
+    <h3>Current Content Creators</h3>
+
+    <ul id="current-ccs">
+      <% User.get_content_creators.each do |u| %>
+        <li> <%= u.username %> </li>
+      <% end %>
+    </ul>
+</div>
+
+</div>

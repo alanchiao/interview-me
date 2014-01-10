@@ -1,0 +1,17 @@
+<div class="comment-box">
+<h4><a href="{{author_url}}">{{author}}</a> <small class="comment-date right">{{time}}</small></h4>
+
+<p>{{breaklines content}}</p>
+<span id="points-{{id}}" class="inline comment-points">
+    {{points}} ·
+</span>
+
+{{#if signed_in}}
+    <a class="vote" href="#" data-comment-id="{{id}}" data-vote="upvote" data-remote="true">
+        <i class="fa fa-thumbs-o-up {{upvote_class}}"></i>
+    </a>
+    <a class="vote" href="#" data-comment-id="{{id}}" data-vote="downvote" data-remote="true">
+        <i class="fa fa-thumbs-o-down {{downvote_class}}"></i>
+    </a>
+{{/if}}
+</div>

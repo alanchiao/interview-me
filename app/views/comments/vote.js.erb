@@ -1,0 +1,2 @@
+commentResp = <%= raw @comments.to_json %>;
+$('#points-<%= @comment.id %>').html('<%= @comment.points.to_s + " " + "point".pluralize(@comment.points.abs) + " · "%>');

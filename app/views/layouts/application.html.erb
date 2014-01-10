@@ -1,0 +1,32 @@
+<!-- Main application html template. Place to add html and partials that appear
+consistently across the site -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>interview.me </title>
+		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<script src="/assets/canvasjs.min.js"></script>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+		<div id="page-content">
+			<div id="flashes">
+			<% flash.each do |key, value| %>
+				<div class="row">
+					<div class="alert alert-<%= key %> alert-dismissable col-sm-8 col-sm-offset-2">
+						<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><%= value %>
+					</div>
+				</div>
+			<% end %>
+			</div>
+			<div class="container">
+				<%= yield %>
+			</div>
+		</div>
+	</body>
+</html>

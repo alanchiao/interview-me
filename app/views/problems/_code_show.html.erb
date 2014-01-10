@@ -1,0 +1,67 @@
+<%# The coding box and Python interpreter load a lot of CSS and JS
+    Include them here so that they are not loaded with every page of the application %>
+<%= stylesheet_link_tag "interpreter" %>
+<%= javascript_include_tag "interpreter", "data-turbolinks-track" => true %>
+
+<div id="code-problem" class="row" data-tests-url="<%= tests_problem_url(@problem) %>">
+	<%# The left side consisting of the user's code input area and the solution view %>
+	<article class="col-sm-7">
+		<ul class="nav nav-tabs" id="code-tabs">
+			<li id="user-solution-tab" class="active"><a href="#user-solution" data-toggle="tab">Code</a></li>
+			<li id="author-solution-tab"><a href="#author-solution" data-toggle="tab">Solution</a></li>
+		</ul>
+		<div class="tab-content">
+			<%# User coding area %>
+			<div id="user-solution" class="tab-pane active">
+				<%# Textarea interprets all spacing and newlines, so indentation is messed up relative
+					to the rest of the code.
+					But this lets the problem look formatted properly in the browse %>
+				<textarea id="code-textarea"><% if @attempt %><%= @attempt.solution %><% else %>
+'''
+<%= @problem.question %>
+
+Write your solution to the problem here.
+'''
+
+<%= @problem.skeleton %><% end %></textarea>
+			</div>
+			<%# Show solution area %>
+			<div id="author-solution" class="tab-pane">
+				<%# Textarea interprets all spacing and newlines, so indentation is messed up relative
+					to the rest of the code. This lets the problem look formatted properly in the browser %>
+				<textarea id="solution-textarea">
+<%= @problem.solution %></textarea>
+			</div>
+		</div>
+		<br>
+		<button class="btn btn-custom" id="run-code">Run my code</button>
+	</article>
+
+	<%# The right side consisting of user output and tests %>
+	<div class="col-sm-5">
+		<ul class="nav nav-tabs" id="output-tabs">
+			<li class="active"><a href="#test-output" data-toggle="tab">Tests</a></li>
+			<li><a href="#user-output" data-toggle="tab">Console</a></li>
+			<li><a href="#hint-output" data-toggle="tab">Hints</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="test-output" class="tab-pane active">
+				<br />
+				<div id="accordion" class="panel-group">
+					<% @index = 0 %>
+					<% @problem.tests.each do |test| %>
+						<% @test = test %>
+						<%= render 'test' %>
+					<% @index += 1 %>
+					<% end %>
+				</div>
+			</div>
+			<div id="user-output" class="tab-pane">
+				<pre id="code-output">Output of 'print' function and test case results.
+</pre>
+			</div>
+			<div id="hint-output" class="tab-pane">
+			</div>
+		</div>
+	</div>
+</div>

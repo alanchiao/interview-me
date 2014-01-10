@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+design1:
+  id: 1
+  type: "DesignProblem"
+  difficulty: 1
+  category_id: 1
+
+code1:
+  id: 2
+  type: "CodeProblem"
+  difficulty: 1
+  category_id: 2
+
+
+design2:
+  id: 3
+  type: "DesignProblem"
+  difficulty: 2
+  category_id: 2
+
+code2:
+  id: 4
+  type: "CodeProblem"
+  difficulty: 2
+  category_id: 1
+
+code3:
+  id: 5
+  type: "CodeProblem"
+  difficulty: 2
+  category_id: 1

@@ -1,0 +1,11 @@
+/**
+* Update user permissions page after adding new content creators
+*/
+$(function(){
+	<% if flash[:danger] %>
+		$("#flashes").html("<div class='alert alert-danger alert-dismissable col-sm-8 col-sm-offset-2'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><%= flash[:danger] %></div>");
+	<% elsif flash[:success] %>
+		$("#current-ccs").append("<li> <%= @newcc.username %></li>");
+		$("#flashes").html("<div class='alert alert-success alert-dismissable col-sm-8 col-sm-offset-2'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><%= flash[:success] %></div>");
+	<% end%>
+});

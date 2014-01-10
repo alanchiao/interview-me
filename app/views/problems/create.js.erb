@@ -1,0 +1,7 @@
+var problem = <%= raw @problem.to_json %>;
+$('#coding-form').hide();
+$('#code-form-hints').attr('class','none');
+
+<% if @problem.errors.any? %>
+
+<% end %>

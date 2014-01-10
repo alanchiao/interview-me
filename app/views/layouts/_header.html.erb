@@ -1,0 +1,50 @@
+<!-- HTML partial for navigation header. Contains parts for things like
+sign in, sign out, and sign up and any other navigation links that
+would be useful across all the pages -->
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+<div class="container">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="<%= root_url %>"><img src="/assets/logo.png"/></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav" id="left-nav">
+      <li><%= link_to "Interview Problems", problems_path %></li>
+      <% if signed_in? && current_user.is_admin? %>
+      <li><%= link_to "User Permissions", permissions_path %></li>
+      <% end %>
+      <% if signed_in? && (current_user.is_admin? || current_user.is_content_creator?) %>
+      <li><%= link_to "Add New Problem", new_problem_path %></li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" id="right-nav">
+      <% if signed_in? %>
+      <li><%= link_to current_user.first_name + "'s profile", current_user, method: "get" %></li>
+      <li><%= link_to "Sign out", signout_path, method: "delete", class: "btn" %></li>
+      <% else %>
+      <li><%= link_to "Register", signup_path, method: "get" %></li>
+	  <li>
+	  	<a href="#" class="btn dropdown-toggle" data-toggle="dropdown">Sign in <span class="caret"></span></a>
+	  	<div class="dropdown-menu">
+          <%= form_for(:session, url: sessions_path, :html => {:id => "form-login", :class => "form"}, remote: true) do |f| %>
+          	<%= f.label :username %>
+            <%= f.text_field :username, :class => "form-control" %>
+            <%= f.label :password %>
+            <%= f.text_field :password, :class => "form-control", :type => "password" %>
+            <%= f.submit "Sign in", :class => "btn" %>
+          <% end %>
+        </div>
+	  </li>
+      <% end %>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div>
+</nav>

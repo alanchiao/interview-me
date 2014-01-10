@@ -1,0 +1,25 @@
+<!--Partial for displaying category questions on 'Interview Problems' page. -->
+<div>
+    <% @category.group_problems_by_difficulty.each do |group| %>
+    <h3>Level <%= group[0] %></h3>
+    
+    <div class="category-group">
+    <% group[1].sort_by!{ |l| l.title.downcase }.each do |problem| %>
+        <div class="category-questions media">
+          <a class="pull-left" href="#">
+            <% if problem.is_code_problem? %>
+                <img src="/assets/keyboard-lg.png" alt="code problem" title="code problem">
+            <% else %>
+                <img src="/assets/lightbulb3.png" alt="design problem" title="design problem">
+            <% end %>
+          </a>
+          <div class="category-question-content">
+            <h4><%= link_to problem.title, problem_url(problem) %></h4>
+            <p><%= problem.question %></p>
+          </div>
+        </div>
+    <% end %>
+    </div>
+
+    <% end %>
+</div>

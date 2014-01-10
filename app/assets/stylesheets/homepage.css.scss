@@ -1,0 +1,93 @@
+@media all and (min-width: 1131px) {
+    #landing {
+        left: 0px;
+        height: 550px;
+        overflow: hidden;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+
+        img {
+         width: 100%;
+        }
+    }
+}
+
+@media all and (max-width: 1130px) {
+    #landing {
+        left: -440px;
+        height: 550px;
+        overflow: hidden;
+        position: absolute;
+        top:0px;
+        width: 1440px;
+
+        img {
+          width: 1440px;
+        }
+    }
+}
+
+#homepage-blurb {
+    background-color: rgba(0,0,0,0.5);
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    height: 550px;
+    padding:170px 20px 0 20px;
+    position:absolute;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    top: 0px;
+    width: 500px;
+    z-index:5;
+
+    h1{
+        font-size: 50px;
+        padding-bottom:5px;
+    }
+
+    p{
+        font-size: 20px;
+        line-height: 1.5em;
+    }
+
+    span {
+        color: #65C9D1;
+    }
+}
+
+#homepage-content{
+    position: absolute;
+    top: 570px;
+
+    .mini-headers{
+        min-height:50px;
+        margin-bottom:0;
+
+        img{
+            position:relative;
+            top:-10px;
+        }
+
+        span{
+            vertical-align:top;
+        }
+    }
+}
+
+#btn-home-problems {
+    background: #FF6347;
+    border-radius: 5px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 1.4em;
+    font-weight: 400;
+    margin-right: 40px;
+    margin-top: 30px;
+    padding: 10px;
+    width: 160px;
+    text-align: center;
+}
+
+.header-image {
+    height: 45px;
+}

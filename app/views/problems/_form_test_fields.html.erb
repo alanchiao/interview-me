@@ -1,0 +1,24 @@
+<%# HTML partial for creating test cases associated with a coding problem %>
+<div class="fields panel-group">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a class=" accordian-toggle" data-toggle="collapse" data-parent="#accordian2"> Test Case </a>	
+			</h4>
+		</div>
+
+		<div class="panel-body collapse in">
+			<div class="accordian-inner">
+				<div class="form-group field update_skeletal">
+					<%= f.label :input, class: "col-sm-4 col-sm-offset-2 control-label"  %>
+					<%= f.text_field :input, placeholder: "Enter test case input", class: 'form-field input' %>
+				</div>
+
+				<div class="form-group field">
+					<%= f.label "Expected Correct Output", class: "col-sm-4 col-sm-offset-2 control-label"  %>
+					<%= f.text_field :correct_output, class: 'form-field expected' %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

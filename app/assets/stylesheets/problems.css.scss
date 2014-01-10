@@ -1,0 +1,302 @@
+// Place all the styles related to the Problems controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.icon-glyph {
+    width: 30px;
+}
+
+.icon-glyph-small {
+    width: 20px;
+}
+
+.vote-glyph {
+    margin: 5px;
+    width: 15px;
+}
+
+#problems-listing {
+    #top-header{
+        margin-top:0;
+    }
+}
+
+.category-questions{
+    border-bottom: 1px solid #aaa;
+}
+
+.CodeMirror {
+    border: 1px solid #DDD;
+}
+
+#code-problem {
+    margin-top: 40px;
+	margin-bottom: 15px;
+
+    .nav-tabs > li.active > a {
+        border-bottom-color: #ddd;
+    }
+
+    #code-output {
+        height: 400px;
+        background-color: white;
+        overflow: auto;
+        border-radius: 0px 4px 4px 4px;
+    }
+
+    .CodeMirror {
+        border-top: 0px;
+    }
+
+    #test-output #accordion {
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: visible;
+
+        .panel {
+            width: 95%;
+        }
+    }
+
+    .hint {
+        font-style: italic;
+    }
+}
+
+.design-title {
+    margin-top: 50px;
+    margin-bottom: 25px;
+    font-size: 1.2em;
+}
+
+#design-input {
+    min-height: 12em;
+    width: 100%;
+    resize: none;
+}
+
+#new-problem-container {
+    margin-top: 20px;
+}
+
+#new-problem-label {
+    text-align: right;
+}
+
+//styles for test case result icons
+.fa-check {
+    color: #1D9D5B;
+}
+
+.fa-square {
+    visibility:hidden;
+}
+
+.fa-times {
+    color: #A33E3C;
+}
+
+.fa-thumbs-o-up, .fa-thumbs-o-down {
+    color: #999;
+}
+
+.fa-thumbs-o-up.active{
+    color: green;
+}
+
+.fa-thumbs-o-down.active{
+    color: red;
+}
+
+.fa-thumbs-o-up:hover, .fa-thumbs-o-down:hover {
+    color: #000;
+}
+
+.form-field {
+    width: 40%;
+}
+
+.form-textarea {
+    height: 8em;
+    resize: none;
+}
+
+#design-question {
+    margin-top: 40px;
+}
+
+.category-listing, .list-group-item {
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid #D1D1D1 !important;
+    border-radius: 2px !important;
+    color: black !important;
+    font-size: 15px !important;
+    padding: 10px 30px !important;
+    margin-bottom:10px !important;
+
+    a {
+        color: black !important;
+    }
+}
+
+.category-listing:hover, .list-group-item:hover {
+    background-color: rgba(32, 96, 85, 0.2) !important;
+    border: 1px solid rgba(129, 201, 240, 0.5) !important;
+    a{
+        color: #275b88 !important;
+    }
+    cursor: pointer;
+    -moz-box-shadow:    0px 0px 3px rgba(129, 201, 240, 0.5) !important;
+    -webkit-box-shadow: 0px 0px 3px rgba(129, 201, 240, 0.5) !important;
+    box-shadow:         0px 0px 3px rgba(129, 201, 240, 0.5) !important;
+}
+
+.category-listing.active, .list-group-item.active {
+    background-color: #428bca !important;
+    color: white !important;
+    a {
+      color: white !important;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+.category-listing.active:hover, .list-group-item.active:hover {
+    background-color: #306da2 !important;
+    a {
+      color: white !important;
+    }
+}
+
+#design-solution-title, .category-questions:last-child {
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius: 4px;
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.3);
+    cursor: pointer;
+    margin: 0 0 20px;
+    padding: 10px 15px;
+}
+
+#design-solution-title {
+    background-color: rgba(255, 255, 255, 0.55);
+}
+
+#design-solution {
+    padding-top: 10px;
+}
+
+.category-questions:first-child {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-left-radius:4px;
+    border-top-right-radius: 4px;
+    padding: 10px 15px;
+    margin: 10px 0 0;
+}
+
+.category-questions {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    margin: 0;
+    width:700px;
+}
+
+.category-question-content {
+    display:inline-block;
+    width: 610px;
+}
+
+#design-problem-question {
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-left-radius:4px;
+    border-top-right-radius: 4px;
+    padding: 10px 15px;
+    margin: 40px 0 0;
+}
+
+
+#comments {
+    margin-top: 40px;
+}
+
+#add-comment {
+    width: 100%;
+}
+
+.comment-box {
+    background-color:rgba(255, 255, 255, 0.9);
+    border-left:20px solid rgba(155, 227, 223, 0.3);
+    box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.2);
+    padding:10px;
+    margin: 12px 0;
+    width: 100%;
+
+    h4 {
+        margin:0 0 10px;
+    }
+
+    p {
+        font-size: 12px; color: #111;
+    }
+}
+
+.comment-box.top {
+    border-left:20px solid rgba(76, 207, 200, 0.3);
+}
+
+.comment-date {
+    margin-left: 10px;
+    color: gray;
+    font-size: 10px;
+}
+
+.comment-points {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+}
+
+.comment-footer {
+    font-size: 0.9em;
+    color: gray;
+}
+
+.btn-custom-mistakes {
+  background-color: #ddd;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.vote {
+    opacity: 0.7;
+
+    &:hover {
+        opacity: 1.0;
+        text-decoration: none;
+    };
+}
+
+.paginate:hover {
+    cursor: pointer;
+}
+
+#save-status {
+    color: gray;
+    margin-top: 15px;
+    padding-right: 2px;
+}
+
+.hidden {
+    display: none;
+}
+
+#form-error {
+    display: none;
+}

@@ -1,0 +1,71 @@
+#profile {
+    p {
+      font-size: 13px;
+      margin-bottom:4px;
+    }
+
+    h4 {
+      height: 38px;
+    }
+}
+
+#profile-username {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.member-icon {
+    height: 0.9em;
+    position: relative;
+    top: -2px;
+}
+
+.profile-img {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+#chart1 { 
+  background-color: white; 
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px; 
+  height: 300px;
+  width:100%; 
+}
+
+#chartContainer{
+  height: 200px;
+  margin: 0 auto; 
+  position: relative; 
+  top:50px;
+  width: 80%; 
+}
+
+#chart2 {
+  background-color: white; 
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 5px; 
+  height: 300px; 
+  width: 100%; 
+}
+
+#chartContainer2{
+  height: 250px; 
+  margin: 0 auto;
+  position: relative; 
+  top: 25px; 
+  width: 80%; 
+}
+
+.profile-attempts {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius:4px;
+  box-shadow: 0px 1px 1px 0px rgba(100, 100, 100, 0.3);
+  margin: 0 0 20px;
+  padding: 10px 15px;
+
+  p {
+    color: rgb(150, 150, 150);
+  }
+
+}
